@@ -1,0 +1,111 @@
+{
+  "tests": [
+    {
+      "name": "Test CPP int_array implementation of `construct` with default",
+      "setup": "sudo apt install --assume-yes catch2; mkdir -p build && cd build; cmake ..; make -j4 int_array_test",
+      "run": "build/int_array_test [construct_default]",
+      "timeout": 2.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `construct`",
+      "run": "build/int_array_test [construct]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `zeros`",
+      "run": "build/int_array_test [zeros]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `ones`",
+      "run": "build/int_array_test [ones]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `range`",
+      "run": "build/int_array_test [range]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `destroy`",
+      "run": "build/int_array_test [destruct]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `push_back`",
+      "run": "build/int_array_test [push_back]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test CPP int_array implementation of `insert`",
+      "run": "build/int_array_test [insert]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test CPP int_array implementation of `pop_back`",
+      "run": "build/int_array_test [pop_back]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `size`",
+      "run": "build/int_array_test [size]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `count`",
+      "run": "build/int_array_test [count]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `index`",
+      "run": "build/int_array_test [index]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `sum`",
+      "run": "build/int_array_test [sum]",
+      "timeout": 0.5,
+      "points": 0.5
+    },
+    {
+      "name": "Test CPP int_array implementation of `add`",
+      "run": "build/int_array_test [add]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test CPP int_array implementation of `mul`",
+      "run": "build/int_array_test [mul]",
+      "timeout": 0.5,
+      "points": 1
+    },
+    {
+      "name": "Test CPP implementation of main",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4 main",
+      "run": "build/main",
+      "timeout": 0.5,
+      "points": 1.5
+    }
+  ],
+  "__deactivated_tests": [
+    {
+      "name": "cppcheck",
+      "setup": "sudo apt install --assume-yes cppcheck",
+      "run": "cppcheck --error-exitcode=1 .",
+      "timeout": 1,
+      "points": 1
+    }
+  ]
+}
