@@ -12,7 +12,6 @@ namespace ia {
         std::size_t __elements;
         int* __array;
 
-        IntArray* (*range)(int, int);
         IntArray* (*destruct)(IntArray*);
         int (*pop_back)(IntArray*);
         void (*push_back)(IntArray*, int);
@@ -22,6 +21,8 @@ namespace ia {
         void (*print)(const IntArray*);
         std::size_t (*size)(const IntArray*);
         long int (*sum)(const IntArray*);
+        IntArray* (*add)(const IntArray*, const IntArray*);
+        IntArray* (*mul)(const IntArray*, const IntArray*);
     };
 
     // Function declerations

@@ -3,6 +3,22 @@
 
 
 namespace ia {
+    // Connect func pointers to func deffinitions
+    void connect(IntArray* self) {
+        self->destruct = destruct;
+        self->pop_back = pop_back;
+        self->push_back = push_back;
+        self->insert = insert;
+        self->count = count;
+        self->index = index;
+        self->print = print;
+        self->size = size;
+        self->sum = sum;
+        self->add = add;
+        self->mul = mul;
+    }
+
+
     IntArray* construct() {
         IntArray* ia = new IntArray;
 
@@ -21,7 +37,7 @@ namespace ia {
         ia->__reserved = dimension;
         ia->__elements = dimension;
 
-        ia->__array = new int[dimension]{};
+        ia->__array = new int[dimension];
 
         return 0;
     }
@@ -33,11 +49,7 @@ namespace ia {
         ia->__reserved = dimension;
         ia->__elements = dimension;
 
-        ia->__array = new int[dimension];
-
-        for (std::size_t i = 0; i < dimension; i++) {
-            ia->__array[i] = 0;
-        }
+        ia->__array = new int[dimension]{};
 
         return 0;
     }
@@ -60,13 +72,28 @@ namespace ia {
 
 
     IntArray* range(int start, int stop) {
+        std::size_t dimension = static_cast<std::size_t>(start + (stop - 1));
 
-        return 0;
+        IntArray* ia = construct(dimension);
+
+        int count = start;
+        for (std::size_t i = 0; i < dimension; ++i) {
+            ia->__array[i] = count++;
+        }
+
+        return ia;
     }
 
 
     IntArray* destruct(IntArray* self) {
-        return 0;
+        if (self != nullptr) {
+            delete[] self->__array;
+            delete self;
+        }
+
+        connect(self);
+
+        return nullptr;
     }
 
 
