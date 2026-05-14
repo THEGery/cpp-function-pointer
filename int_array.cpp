@@ -19,6 +19,23 @@ namespace ia {
     }
 
 
+    void grow_reserved(IntArray* self) {
+        std::size_t new_size = self->__reserved * 2;
+
+        int* new_data = new int[new_size]; // new larger memory slot
+
+        for (std::size_t i = 0; i < self->__elements; i++){
+            new_data[i] = self->__array[i]; // migrate data
+        }
+
+        delete[] self->__array; // array is under new_data
+
+        // Update struct
+        self->__array = new_data;
+        self->__reserved = new_size;
+    } // allocate more space and migrate data
+
+
     IntArray* construct() {
         IntArray* ia = new IntArray;
 
@@ -111,7 +128,14 @@ namespace ia {
     }
 
 
-    void push_back(IntArray* self, int elem) {}
+    void push_back(IntArray* self, int elem) {
+        if (self->__reserved == self->__elements) {
+            grow_reserved(self);
+        }
+
+        self->__array[self->__elements] = elem;
+        self->__elements++;
+    }
 
 
     void insert(IntArray* self, std::size_t index, int elem) {}
