@@ -153,7 +153,14 @@ namespace ia {
 
 
     std::size_t count(const IntArray* self, int elem) {
-        return 0;
+        std::size_t counter = 0;
+        for (std::size_t i = 0; i < self->__elements; i++) {
+            if (self->__array[i] == elem) {
+                counter++;
+            }
+        }
+
+        return counter;
     }
 
 
