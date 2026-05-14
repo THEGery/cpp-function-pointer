@@ -1,6 +1,7 @@
 #include "int_array.hpp"
 #include <cstddef>
-
+#include <cstdlib>
+#include <iostream>
 
 namespace ia {
     // Connect func pointers to func deffinitions
@@ -165,15 +166,27 @@ namespace ia {
 
 
     int index(const IntArray* self, std::size_t index) {
-        return 0;
+        if (index > self->__elements) {
+            std::cerr << "IndexError: Given index is " << index
+                      << " but array only has " << self->__elements 
+                      << "elements" << std::endl; 
+        }
+
+        return self->__array[index];
     }
 
 
-    void print(const IntArray* self) {}
+    void print(const IntArray* self) {
+        for (std::size_t i = 0; i < self->__elements; i++) {
+            std::cout << self->__array[i] << " ";
+        }
+
+        std::cout << std::endl;
+    }
 
 
     std::size_t size(const IntArray* self) {
-        return 0;
+        return self->__elements;
     }
 
 
