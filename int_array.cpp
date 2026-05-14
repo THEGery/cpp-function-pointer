@@ -138,7 +138,18 @@ namespace ia {
     }
 
 
-    void insert(IntArray* self, std::size_t index, int elem) {}
+    void insert(IntArray* self, std::size_t index, int elem) {
+        if (self->__reserved == self->__elements) {
+            grow_reserved(self);
+        }
+
+        for (std::size_t i = self->__elements; i > index; i--) {
+            self->__array[i] = self->__array[i - 1];
+        }
+
+        self->__array[index] = elem;
+        self->__elements++;
+    }
 
 
     std::size_t count(const IntArray* self, int elem) {
