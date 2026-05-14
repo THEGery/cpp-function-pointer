@@ -201,11 +201,11 @@ namespace ia {
 
 
     IntArray* add(const IntArray* first, const IntArray* second) {
-        std::size_t length = (first->__elements > second->__elements) 
-                      ? first->__elements 
-                      : first->__elements;
+        std::size_t length = (first->__elements > second->__elements)
+                             ? first->__elements 
+                             : second->__elements;
 
-        IntArray* result = zeros(length);
+        IntArray* result = ia::zeros(length);
 
         for (std::size_t i = 0; i < length; i++) {
             int sum = 0;
@@ -224,10 +224,10 @@ namespace ia {
 
     IntArray* mul(const IntArray* first, const IntArray* second) {
         std::size_t length = (first->__elements > second->__elements) 
-                      ? first->__elements 
-                      : first->__elements;
+                              ? first->__elements 
+                              : second->__elements;
 
-        IntArray* result = zeros(length);
+        IntArray* result = ia::zeros(length);
 
         for (std::size_t i = 0; i < length; i++) {
 
