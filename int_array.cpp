@@ -191,7 +191,12 @@ namespace ia {
 
 
     long int sum(const IntArray* self) {
-        return 0;
+        int sum = 0;
+        for (std::size_t i = 0; i < self->__elements; i++) {
+            sum += self->__array[i];
+        }
+
+        return sum;
     }
 
 
