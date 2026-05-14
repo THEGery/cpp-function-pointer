@@ -26,8 +26,9 @@ namespace ia {
         ia->__elements = 0;
 
         ia->__array = new int[100];
+        connect(ia);
 
-        return 0;
+        return ia;
     }
 
 
@@ -35,11 +36,12 @@ namespace ia {
         IntArray* ia = new IntArray;
 
         ia->__reserved = dimension;
-        ia->__elements = dimension;
+        ia->__elements = 0;
 
         ia->__array = new int[dimension];
+        connect(ia);
 
-        return 0;
+        return ia;
     }
 
 
@@ -50,8 +52,9 @@ namespace ia {
         ia->__elements = dimension;
 
         ia->__array = new int[dimension]{};
+        connect(ia);
 
-        return 0;
+        return ia;
     }
 
 
@@ -67,18 +70,21 @@ namespace ia {
             ia->__array[i] = 1;
         }
 
-        return 0;
+        connect(ia);
+
+        return ia;
     }
 
 
     IntArray* range(int start, int stop) {
-        std::size_t dimension = static_cast<std::size_t>(start + (stop - 1));
+        std::size_t dimension = static_cast<std::size_t>(stop - start);
 
         IntArray* ia = construct(dimension);
+        ia->__elements = dimension;
 
-        int count = start;
+        int current = start;
         for (std::size_t i = 0; i < dimension; ++i) {
-            ia->__array[i] = count++;
+            ia->__array[i] = current++;
         }
 
         return ia;
@@ -88,11 +94,10 @@ namespace ia {
     IntArray* destruct(IntArray* self) {
         if (self != nullptr) {
             delete[] self->__array;
-            delete self;
+            self->__array = nullptr;
         }
 
-        connect(self);
-
+        delete self;
         return nullptr;
     }
 
