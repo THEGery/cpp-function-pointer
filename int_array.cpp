@@ -98,7 +98,11 @@ namespace ia {
 
 
     int pop_back(IntArray* self) {
-        return 0;
+        std::size_t last = self->__array[self->__elements - 1];
+
+        self->__elements--;
+
+        return last;
     }
 
 
