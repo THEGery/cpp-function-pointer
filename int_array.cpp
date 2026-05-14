@@ -223,8 +223,25 @@ namespace ia {
 
 
     IntArray* mul(const IntArray* first, const IntArray* second) {
-        return 0;
+        std::size_t length = (first->__elements > second->__elements) 
+                      ? first->__elements 
+                      : first->__elements;
+
+        IntArray* result = zeros(length);
+
+        for (std::size_t i = 0; i < length; i++) {
+
+            if (i < first->__elements && i < second->__elements) {
+                result->__array[i] = first->__array[i] * second->__array[i];
+            }
+            else if (i < first->__elements) {
+                result->__array[i] = first->__array[i];
+            }
+            else {
+                result->__array[i] = second->__array[i];
+            }
+        }
+
+        return result;
     }
-
-
 }
