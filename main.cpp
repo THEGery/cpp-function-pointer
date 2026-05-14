@@ -11,12 +11,12 @@ int main() {
     ia::IntArray* ia_ptr = ia::zeros(10);
     print_edited("construct", ia_ptr);
     ia_ptr = ia_ptr->destruct(ia_ptr);
-    
-    
+
+
     ia_ptr = ia::ones(10);
     print_edited("ones", ia_ptr);
     ia_ptr = ia_ptr->destruct(ia_ptr);
-    
+
     return 0;
 }
 

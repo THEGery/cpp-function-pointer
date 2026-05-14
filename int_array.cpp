@@ -201,7 +201,24 @@ namespace ia {
 
 
     IntArray* add(const IntArray* first, const IntArray* second) {
-        return 0;
+        std::size_t length = (first->__elements > second->__elements) 
+                      ? first->__elements 
+                      : first->__elements;
+
+        IntArray* result = zeros(length);
+
+        for (std::size_t i = 0; i < length; i++) {
+            int sum = 0;
+            if (i < first->__elements) {
+                sum += first->__array[i];
+            }
+            if (i < second->__elements) {
+                sum += second->__array[i];
+            }
+            result->__array[i] = sum;
+        }
+
+        return result;
     }
 
 
